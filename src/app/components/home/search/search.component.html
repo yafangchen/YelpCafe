@@ -1,0 +1,17 @@
+<div class="search-container">
+  <h1>Yelp Cafe</h1>
+  <div class="search-form">
+    <!--
+    <label for="cafe-name" class="search-label">Search for a Cafe</label>
+    <input type="text" id="cafe-name" placeholder="Enter a cafe..." class="search-input">
+    <input type="text" id="cafe-pos" placeholder="Enter a place..." class="search-input">
+    <input type="submit" value="Search Cafe!" class="btn-primary">-->
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" class="search-form">
+      <div class="field">
+        <label for="searchInput">Search for Cafe </label>
+        <input type="text" id="searchInput" placeholder="Enter Cafe name..." name="cafeName" ngModel>
+      </div>
+      <button type="submit" class="btn-primary">Search!</button>
+    </form>
+  </div>
+</div>
