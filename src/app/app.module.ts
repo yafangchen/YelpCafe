@@ -15,6 +15,7 @@ import { LandingComponent } from './components/home/landing/landing.component';
 import { SearchComponent } from './components/home/search/search.component';
 import { FooterComponent } from './components/home/footer/footer.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CafeViewComponent } from './components/cafe/cafe-view/cafe-view.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     HomeComponent,
     LandingComponent,
     SearchComponent,
-    FooterComponent
+    FooterComponent,
+    CafeViewComponent
   ],
   imports: [
     BrowserModule,
