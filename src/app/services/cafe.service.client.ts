@@ -5,28 +5,24 @@ import {Router} from '@angular/router';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class UserService {
+export class CafeService {
     constructor(private httpClient: HttpClient, private router: Router) {}
 
     baseUrl = environment.baseUrl;
 
-    createCafe(user) {
-        return this.httpClient.post(this.baseUrl + '/api/user', user);
+    createCafe(cafe) {
+        return this.httpClient.post(this.baseUrl + '/api/cafe', cafe);
     }
 
-    findUserByCredentials(username: String, password: String) {
-        return this.httpClient.get(this.baseUrl + '/api/user?username=' + username + '&password=' + password);
+    findCafeById(cafeId: String) {
+        return this.httpClient.get(this.baseUrl + '/api/cafe/' + cafeId);
     }
 
-    findUserById(userId: String) {
-        return this.httpClient.get(this.baseUrl + '/api/user/' + userId);
+    updateCafe(cafe) {
+        return this.httpClient.put(this.baseUrl + '/api/cafe/' + cafe._id, cafe);
     }
 
-    updateUser(user) {
-        return this.httpClient.put(this.baseUrl + '/api/user/' + user._id, user);
-    }
-
-    deleteUser(userId: String) {
-        return this.httpClient.delete(this.baseUrl + '/api/user/' + userId);
+    deleteCafe(cafeId: String) {
+        return this.httpClient.delete(this.baseUrl + '/api/cafe/' + cafeId);
     }
 }

@@ -17,6 +17,8 @@ import { FooterComponent } from './components/home/footer/footer.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CafeViewComponent } from './components/cafe/cafe-view/cafe-view.component';
 
+import {CafeService} from './services/cafe.service.client';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import { CafeViewComponent } from './components/cafe/cafe-view/cafe-view.compone
     ReactiveFormsModule,
     NgxCarouselModule
   ],
-  providers: [],
+  providers: [CafeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
