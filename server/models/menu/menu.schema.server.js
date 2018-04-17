@@ -1,7 +1,9 @@
 var mongoose = require("mongoose");
 
 var MenuSchema = mongoose.Schema ({
-    name : {type : String, required : true}
+    cafeId: String,
+    name : {type : String, required : true},
+    price: String
 });
 
 module.exports = MenuSchema;

@@ -6,8 +6,13 @@ CafeProfileModel.findCafeProfileById = findCafeProfileById;
 CafeProfileModel.createCafeProfile = createCafeProfile;
 CafeProfileModel.updateCafeProfile = updateCafeProfile;
 CafeProfileModel.removeCafeProfile = removeCafeProfile;
+CafeProfileModel.findCafesByUserId = findCafesByUserId;
 
 module.exports = CafeProfileModel;
+
+function findCafesByUserId(userId) {
+    return CafeProfileModel.find({"userId": userId});
+}
 
 function findCafeProfileById(cafeProfileId) {
     return CafeProfileModel.findOne({_id: cafeProfileId});

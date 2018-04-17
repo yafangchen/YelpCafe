@@ -2,9 +2,18 @@ module.exports = function (app) {
     var cafeProfileModel = require("../models/profile/cafe_profile.model.server");
 
     app.get("/api/cafe/:cafeId", findCafeProfileById);
-    app.post("/api/cafe", createCafeProfile);
+    app.post("/api/user/:userId/cafe", createCafeProfile);
     app.put("/api/cafe/:cafeId", updateCafeProfile);
     app.delete("/api/cafe/:cafeId", removeCafeProfile);
+    app.get("/api/user/:userId/cafes", findCafesByUserId);
+
+    function findCafesByUserId(req, res) {
+        var userId = req.params['userId'];
+        cafeProfileModel.findCafesByUserId(userId)
+            .then(function (cafes) {
+                res.json(cafes);
+            })
+    }
 
     function findCafeProfileById(req, res) {
         var cafeProfileId = req.params['cafeProfileId'];
@@ -16,6 +25,8 @@ module.exports = function (app) {
 
     function createCafeProfile(req, res) {
         var cafeProfile = req.body;
+        var userId = req.params['userId'];
+        cafeProfile.userId = userId;
         cafeProfileModel.createCafeProfile(cafeProfile)
             .then(function (cafeProfile) {
                 res.json(cafeProfile);

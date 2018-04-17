@@ -7,10 +7,10 @@ import {CafeListComponent} from './components/cafe/cafe-list/cafe-list.component
 import {CafeViewComponent} from './components/cafe/cafe-view/cafe-view.component';
 
 const APP_ROUTES: Routes = [
-    { path: 'cafe/new', component : CafeNewComponent},
-    { path : 'cafe/edit' , component: CafeEditComponent},
-    { path : 'cafe/list' , component: CafeListComponent},
-    { path : 'cafe/view/:cafeProfileId' , component: CafeViewComponent}
+    { path: 'user/:userId/cafe/new', component : CafeNewComponent},
+    { path : 'user/:userId/cafe/:cafeId' , component: CafeEditComponent},
+    { path : 'user/:userId/cafes' , component: CafeListComponent},
+    { path : 'user/:userId/cafe/view/:cafeId' , component: CafeViewComponent}
     // so on
 ];
 

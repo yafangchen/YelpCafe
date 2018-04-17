@@ -10,8 +10,8 @@ export class CafeService {
 
     baseUrl = environment.baseUrl;
 
-    createCafe(cafe) {
-        return this.httpClient.post(this.baseUrl + '/api/cafe', cafe);
+    createCafe(userId, cafe) {
+        return this.httpClient.post(this.baseUrl + '/api/user/' + userId + '/cafe', cafe);
     }
 
     findCafeById(cafeId: String) {
@@ -24,5 +24,9 @@ export class CafeService {
 
     deleteCafe(cafeId: String) {
         return this.httpClient.delete(this.baseUrl + '/api/cafe/' + cafeId);
+    }
+
+    findCafesByUserId(userId: String) {
+        return this.httpClient.get(this.baseUrl + '/api/user/' + userId + '/cafes');
     }
 }
