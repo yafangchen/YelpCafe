@@ -11,25 +11,31 @@ export class CafeViewComponent implements OnInit {
   cafeProfileId: String;
   name: String;
   address: String;
-  openHour: String
-  menus: Array;
-  reviews: Array;
+  openHour: String;
+  menus: {};
+  reviews: {};
+
   constructor(private activatedRoute: ActivatedRoute, private _cafeServie: CafeService, private router: Router) {}
 
   ngOnInit() {
-      this.activatedRoute.params.subscribe(params => {
-          this.cafeProfileId = params['cafeProfileId'];
+
+      console.log(this.activatedRoute.params);
+      /*
+      this.activatedRoute.params.subscribe(param=> {
+          console.log(param)
+          this.cafeProfileId = param['cafeId'];
+          this._cafeServie.findCafeById(this.cafeProfileId)
+              .subscribe(
+                  (data: any) => {
+                      console.log('Cafe by id: ', data);
+                      this.name = data.name;
+                      this.address = data.address;
+                      this.openHour = data.open_hour;
+                      this.menus = data.menus;
+                      this.reviews = data.reviews;
+                  }
+              );
       });
-      this._cafeServie.findCafeById(this.cafeProfileId)
-          .subscribe(
-              (data: any) => {
-                  console.log('website by id: ', data);
-                  this.name = data.name;
-                  this.address = data.address;
-                  this.openHour = data.open_hour;
-                  this.menus = data.menus;
-                  this.reviews = data.reviews;
-              }
-          );
+      */
   }
 }

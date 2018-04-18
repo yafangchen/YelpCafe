@@ -14,6 +14,7 @@ export class CafeListComponent implements OnInit {
   constructor(private cafeService: CafeService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log('--==--');
     this.userId = this.activatedRoute.params['userId'];
     this.cafeService.findCafesByUserId(this.userId)
         .subscribe(cafes => {

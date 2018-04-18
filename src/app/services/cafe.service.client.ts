@@ -15,6 +15,7 @@ export class CafeService {
     }
 
     findCafeById(cafeId: String) {
+        console.log('--==--' + 'url:' + this.baseUrl + ', cafeId:' + cafeId);
         return this.httpClient.get(this.baseUrl + '/api/cafe/' + cafeId);
     }
 

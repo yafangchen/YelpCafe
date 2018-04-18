@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxCarouselModule } from 'ngx-carousel';
 import { Routing } from './app.routing';
-
+import { HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/customer/login/login.component';
@@ -38,10 +38,11 @@ import {CafeService} from './services/cafe.service.client';
   ],
   imports: [
       BrowserModule,
-      Routing,
       FormsModule,
+      HttpClientModule,
       ReactiveFormsModule,
-      NgxCarouselModule
+      NgxCarouselModule,
+      Routing
   ],
   providers: [CafeService],
   bootstrap: [AppComponent]
