@@ -6,43 +6,73 @@
   </div>
 </nav>
 
-<div class="container" style="margin-top: 100px;">
-  <!--
-  <a>Name: {{ name }}</a>
-  <a>Address: {{ address }}</a>
-  <a>Open Hour: {{ openHour}}</a>
-  -->
-  <!--
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input [(ngModel)]="username" type="text" class="form-control" id="username" placeholder="username">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input [(ngModel)]="password" type="password" class="form-control" id="password" placeholder="password">
-  </div>
-  <div class="form-group">
-    <label for="first-name">First Name</label>
-    <input [(ngModel)]="firstName" type="text" class="form-control" id="first-name" placeholder="Alice">
-  </div>
-  <div class="form-group">
-    <label for="last-name">Last Name</label>
-    <input [(ngModel)]="lastName" type="text" class="form-control" id="last-name" placeholder="Wonderland">
-  </div>
+<style>
+    .card {
+      float: left;
+      width: 33.333%;
+      padding: .75rem;
+      margin-bottom: 2rem;
+      border: 0;
+      position: relative;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      background-color: #fff;
+      border: 1px solid rgba(0,0,0,.125);
+      border-radius: .25rem;
+    }
+</style>
 
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input [(ngModel)]="email" type="email" class="form-control" id="email" placeholder="hello@gmail.com">
+<section style="margin-top: 100px;">
+  <div class = "container-fluid" style="text-align: center">
+    <img *ngFor = "let image of images" src="/assets/images/{{image}}" style="height:200px; margin-left:5px">
+    <h1><strong>{{name}}</strong></h1>
+    <address>
+        {{address}}
+    </address>
+    <abbr title="phone">P:</abbr> {{phone}} <br>
+    <strong>Open Hour: {{openHour}}</strong>
   </div>
+</section>
+<section style="margin-top:10px;">
+  <h1>Menus</h1>
+  <div class="container-fluid">
+      <div class="row">
+        <div *ngFor = "let menu of menus" class="card" style="text-align: center;">
+            <img src="/assets/images/{{menu.image}}" alt="100%*300" style="display:block; height:300px;">
+            <p><strong>{{menu.name}}</strong></p>
+            <p><strong>{{menu.price}}</strong></p>
+            <p>{{menu.description}}</p>
+        </div>
+      </div>
+  </div>
+</section>
 
-  <a class="btn btn-info btn-block" (click)="updateUser(user)">Update</a>
-  <a class="btn btn-primary btn-block"
-     routerLink="/user/{{userId}}/website">Websites</a>
-  <a class="btn btn-danger  btn-block" (click)="logout()">Logout</a>
-  <a class="btn btn-danger btn-block "
-     (click)= "deleteUser()">un-register</a> -->
-</div>
-
+<section>
+    <h1>Reviews</h1>
+    <div class="container-fluid" >
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>User</th>
+                <th>Comment</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let review of reviews">
+                <td>{{review.user}}</td>
+                <td>{{review.content}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
 
 <nav class="navbar navbar-fixed-bottom cl-blue-navbar">
 </nav>

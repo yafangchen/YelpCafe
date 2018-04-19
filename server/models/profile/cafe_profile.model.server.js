@@ -21,7 +21,13 @@ function findCafeProfileById(cafeProfileId) {
 function updateCafeProfile(cafeProfileId, cafeProfile) {
     return CafeProfileModel.update({_id: cafeProfileId}, {
         $set: {name: cafeProfile.name,
-            address: cafeProfile.address}});
+            address: cafeProfile.address,
+            open_hour: cafeProfile.open_hour,
+            phone: cafeProfile.phone,
+            menus: cafeProfile.menus,
+            reviews: cafeProfile.reviews,
+            images: cafeProfile.images
+        }});
 }
 
 function createCafeProfile(cafeProfile) {

@@ -3,13 +3,14 @@ var menuSchema = require("../menu/menu.schema.server");
 var reviewSchema = require("../review/review.schema.server");
 
 var CafeProfileSchema = mongoose.Schema ({
-    userId: String,
+    userId: {type: mongoose.Schema.Types.ObjectId, required : true},
     name : {type : String, required : true},
     address : String,
     open_hour : String,
-    menu: [menuSchema],
+    phone: String,
+    menus: [menuSchema],
     reviews: [reviewSchema],
-    image: Array
+    images: Array
 }, {collection: "cafe_profile" });
 
 module.exports = CafeProfileSchema;

@@ -14,12 +14,21 @@ export class CafeListComponent implements OnInit {
   constructor(private cafeService: CafeService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log('--==--');
+    this.activatedRoute.params.subscribe(params => {
+      this.userId = params['userId'];
+      this.cafeService.findCafesByUserId(this.userId)
+          .subscribe(cafes => {
+              this.cafes = cafes;
+          });
+    });
+    /*
     this.userId = this.activatedRoute.params['userId'];
+    console.log(this.activatedRoute.params);
     this.cafeService.findCafesByUserId(this.userId)
         .subscribe(cafes => {
           this.cafes = cafes;
         });
+    */
   }
 
 }

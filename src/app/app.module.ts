@@ -20,7 +20,6 @@ import { CafeViewComponent } from './components/cafe/cafe-view/cafe-view.compone
 
 import {CafeService} from './services/cafe.service.client';
 
-
 @NgModule({
   declarations: [
     AppComponent,

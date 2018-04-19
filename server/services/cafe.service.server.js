@@ -16,7 +16,7 @@ module.exports = function (app) {
     }
 
     function findCafeProfileById(req, res) {
-        var cafeProfileId = req.params['cafeProfileId'];
+        var cafeProfileId = req.params['cafeId'];
         cafeProfileModel.findCafeProfileById(cafeProfileId)
             .then(function (cafeProfile) {
                 res.json(cafeProfile);
@@ -34,7 +34,7 @@ module.exports = function (app) {
     }
 
     function updateCafeProfile(req, res) {
-        var cafeProfileId = req.params['cafeProfileId'];
+        var cafeProfileId = req.params['cafeId'];
         var cafeProfile = req.body;
         cafeProfileModel.updateCafeProfile(cafeProfileId, cafeProfile)
             .then(function (cafeProfile) {
@@ -43,7 +43,7 @@ module.exports = function (app) {
     }
 
     function removeCafeProfile(req, res) {
-        var cafeProfileId = req.params['cafeProfileId'];
+        var cafeProfileId = req.params['cafeId'];
         cafeProfileModel.removeCafeProfile(cafeProfileId)
             .then(function (status) {
                 res.json(status);

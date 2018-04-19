@@ -14,13 +14,13 @@ export class CafeViewComponent implements OnInit {
   openHour: String;
   menus: {};
   reviews: {};
+  images: {};
+  phone: String;
 
   constructor(private activatedRoute: ActivatedRoute, private _cafeServie: CafeService, private router: Router) {}
 
   ngOnInit() {
 
-      console.log(this.activatedRoute.params);
-      /*
       this.activatedRoute.params.subscribe(param=> {
           console.log(param)
           this.cafeProfileId = param['cafeId'];
@@ -33,9 +33,10 @@ export class CafeViewComponent implements OnInit {
                       this.openHour = data.open_hour;
                       this.menus = data.menus;
                       this.reviews = data.reviews;
+                      this.images = data.images;
+                      this.phone = data.phone;
                   }
               );
       });
-      */
   }
 }
