@@ -1,103 +1,55 @@
 module.exports = function (app) {
-    var cafeProfileModel = require("../models/profile/cafe_profile.model.server");
+    var cafeModel = require("../models/cafe/cafe.model.server");
 
-    app.get("/api/cafe/:cafeId", findCafeProfileById);
-    app.post("/api/user/:userId/cafe", createCafeProfile);
-    app.put("/api/cafe/:cafeId", updateCafeProfile);
-    app.delete("/api/cafe/:cafeId", removeCafeProfile);
-    app.get("/api/user/:userId/cafes", findCafesByUserId);
+    app.post("/api/owner/:ownerId/cafe", createCafe);
 
-    function findCafesByUserId(req, res) {
-        var userId = req.params['userId'];
-        cafeProfileModel.findCafesByUserId(userId)
+    app.get("/api/cafe/:cafeId", findCafeById);
+    app.put("/api/cafe/:cafeId", updateCafe);
+    app.delete("/api/cafe/:cafeId", removeCafe);
+
+    app.get("/api/owner/:ownerId/cafes", findCafesByOwnerId);
+
+    function findCafesByOwnerId(req, res) {
+        var ownerId = req.params['ownerId'];
+        cafeModel.findCafesByOwnerId(ownerId)
             .then(function (cafes) {
                 res.json(cafes);
             })
     }
 
-    function findCafeProfileById(req, res) {
-        var cafeProfileId = req.params['cafeId'];
-        cafeProfileModel.findCafeProfileById(cafeProfileId)
-            .then(function (cafeProfile) {
-                res.json(cafeProfile);
+    function findCafeById(req, res) {
+        var cafeId = req.params['cafeId'];
+        cafeModel.findCafeById(cafeId)
+            .then(function (cafe) {
+                res.json(cafe);
             })
     }
 
-    function createCafeProfile(req, res) {
-        var cafeProfile = req.body;
-        var userId = req.params['userId'];
-        cafeProfile.userId = userId;
-        cafeProfileModel.createCafeProfile(cafeProfile)
-            .then(function (cafeProfile) {
-                res.json(cafeProfile);
+    function createCafe(req, res) {
+        var cafe = req.body;
+        var ownerId = req.params['ownerId'];
+        cafe.ownerId = ownerId;
+        cafeModel.createCafe(cafe)
+            .then(function (cafe) {
+                res.json(cafe);
             })
     }
 
-    function updateCafeProfile(req, res) {
-        var cafeProfileId = req.params['cafeId'];
-        var cafeProfile = req.body;
-        cafeProfileModel.updateCafeProfile(cafeProfileId, cafeProfile)
-            .then(function (cafeProfile) {
-                res.json(cafeProfile);
+    function updateCafe(req, res) {
+        var cafeId = req.params['cafeId'];
+        var cafe = req.body;
+        cafeModel.updateCafe(cafeId, cafe)
+            .then(function (cafe) {
+                res.json(cafe);
             })
     }
 
-    function removeCafeProfile(req, res) {
-        var cafeProfileId = req.params['cafeId'];
-        cafeProfileModel.removeCafeProfile(cafeProfileId)
+    function removeCafe(req, res) {
+        var cafeId = req.params['cafeId'];
+        cafeModel.removeCafe(cafeId)
             .then(function (status) {
                 res.json(status);
             })
     }
-
-    /*
-    app.post("/api/website/:websiteId/page", createPage);
-    app.get("/api/page/:pageId", findPageById);
-    app.put("/api/page/:pageId", updatePageById);
-    app.delete("/api/page/:pageId", deletePage);
-
-    function findAllPagesForWebsite(req, res) {
-      var websiteId = req.params['websiteId'];
-      pageModel.findAllPagesForWebsite(websiteId)
-        .then(function(pages){
-          res.json(pages);
-        })
-    }
-
-    function createPage(req, res) {
-      var websiteId = req.params['websiteId'];
-      var page = req.body;
-      page.websiteId = websiteId;
-      pageModel.createPage(page)
-        .then(function(page){
-          res.json(page);
-        })
-    }
-
-    function findPageById(req, res) {
-      var pageId = req.params['pageId'];
-      pageModel.findPageById(pageId)
-        .then(function(page){
-          res.json(page);
-        })
-    }
-
-    function updatePageById(req, res) {
-      var pageId = req.params['pageId'];
-      var newPage = req.body;
-      pageModel.updatePageById(pageId, newPage)
-        .then(function(page){
-          res.json(page);
-        })
-    }
-
-    function deletePage(req, res) {
-      var pageId = req.params['pageId'];
-      pageModel.deletePage(pageId)
-        .then(function(status){
-          res.send(status);
-        })
-    }
-    */
 }
 

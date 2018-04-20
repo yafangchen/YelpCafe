@@ -1,9 +1,9 @@
 var mongoose = require("mongoose");
 
 var ReviewSchema = mongoose.Schema ({
-    reviewId : mongoose.Schema.Types.ObjectId,
-    user : {type : String, required : true},
+    userId: {type: mongoose.Schema.Types.ObjectId, required : true},
+    cafeId: {type: mongoose.Schema.Types.ObjectId, required : true},
     content: String
-});
+}, {collection: "review" });
 
 module.exports = ReviewSchema;
