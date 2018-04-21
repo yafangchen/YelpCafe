@@ -19,6 +19,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CafeViewComponent } from './components/cafe/cafe-view/cafe-view.component';
 
 import {CafeService} from './services/cafe.service.client';
+import {SharedService} from './services/shared.service';
+import {MenuService} from './services/menu.service.client';
+import {ReviewService} from './services/review.service.client';
+import {UserService} from './services/user.service.client';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,7 @@ import {CafeService} from './services/cafe.service.client';
       NgxCarouselModule,
       Routing
   ],
-  providers: [CafeService],
+  providers: [CafeService, SharedService, UserService, MenuService, ReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

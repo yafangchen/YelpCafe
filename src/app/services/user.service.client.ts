@@ -1,17 +1,65 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
+import {SharedService} from './shared.service';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UserService {
-    constructor(private httpClient: HttpClient, private router: Router) {}
+    constructor(private httpClient: HttpClient, private router: Router, private sharedService: SharedService) {}
 
     baseUrl = environment.baseUrl;
 
     findAllUsers() {
         return this.httpClient.get(this.baseUrl + '/api/user/all');
+    }
+
+    login(username: String, password: String) {
+        const body = {
+            username : username,
+            password : password
+        };
+        return this.httpClient.post(this.baseUrl + '/api/login', body, {withCredentials: true});
+    }
+
+    logout() {
+        return this.httpClient.post(this.baseUrl + '/api/logout', '', {
+            withCredentials: true,
+            responseType: 'text'
+        });
+    }
+
+    register(username: String, password: String, firstName: String, lastName: String) {
+        const user = {
+            username : username,
+            password : password,
+            firstName: firstName,
+            lastName: lastName
+        };
+        return this.httpClient.post(this.baseUrl + '/api/register', user, {withCredentials: true});
+    }
+
+    loggedIn() {
+        return this.httpClient.post(this.baseUrl + '/api/loggedIn', '', {withCredentials: true})
+            .map(
+                (user: any) => {
+                    if (user !== 0) {
+                        this.sharedService.user = user; // setting user so as to share with all components
+                        console.log(this.sharedService.user);
+                        return true;
+                    } else {
+                        this.router.navigate(['/login']);
+                        return false;
+                    }
+                }
+            );
+    }
+
+
+    getCafesByOwnerId(ownerId) {
+        return this.httpClient.get(this.baseUrl + 'api/owner/' + ownerId + 'cafes');
+>>>>>>> passport
     }
 
     createUser(user) {
