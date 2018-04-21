@@ -10,23 +10,27 @@ export class UserService {
 
     baseUrl = environment.baseUrl;
 
-    getCafesByOwnerId(ownerId) {
-        return this.httpClient.get(this.baseUrl + 'api/owner/' + ownerId + 'cafes');
+    findAllUsers() {
+        return this.httpClient.get(this.baseUrl + '/api/user/all');
     }
 
-    getCafeById(cafeId) {
-        return this.httpClient.get(this.baseUrl + 'api/cafe/' + cafeId);
+    createUser(user) {
+        return this.httpClient.post(this.baseUrl + '/api/user', user);
     }
 
-    updateCafe(cafeId, cafe) {
-        return this.httpClient.put(this.baseUrl + 'api/cafe' + cafeId, cafe);
+    findUser(username, password) {
+        return this.httpClient.get(this.baseUrl + '/api/user?username' + username + '&password=' + password);
     }
 
-    deleteCafe(cafeId) {
-        return this.httpClient.delete(this.baseUrl + 'api/cafe/' + cafeId);
+    findUserById(userId) {
+        return this.httpClient.get(this.baseUrl + '/api/user/' + userId);
     }
 
-    createCafe(ownerId, cafe) {
-        return this.httpClient.post(this.baseUrl + '/api/owner/' + ownerId + '/cafe', cafe);
+    updateUser(userId, user) {
+        return this.httpClient.put(this.baseUrl + '/api/user/' + userId, user);
+    }
+
+    deleteUser(userId, user) {
+        return this.httpClient.delete(this.baseUrl + '/api/user/' + userId);
     }
 }

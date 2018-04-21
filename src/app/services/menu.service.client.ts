@@ -10,23 +10,23 @@ export class MenuService {
 
     baseUrl = environment.baseUrl;
 
-    getCafesByOwnerId(ownerId) {
-        return this.httpClient.get(this.baseUrl + 'api/owner/' + ownerId + 'cafes');
+    findMenuById(menuId) {
+        return this.httpClient.get(this.baseUrl + '/api/menu/' + menuId);
     }
 
-    getCafeById(cafeId) {
-        return this.httpClient.get(this.baseUrl + 'api/cafe/' + cafeId);
+    updateMenu(menuId, menu) {
+        return this.httpClient.put(this.baseUrl + '/api/menu/' + menuId, menu);
     }
 
-    updateCafe(cafeId, cafe) {
-        return this.httpClient.put(this.baseUrl + 'api/cafe' + cafeId, cafe);
+    deleteMenu(menuId) {
+        return this.httpClient.delete(this.baseUrl + '/api/menu/' + menuId);
     }
 
-    deleteCafe(cafeId) {
-        return this.httpClient.delete(this.baseUrl + 'api/cafe/' + cafeId);
+    createMenu(cafeId, menu) {
+        return this.httpClient.post(this.baseUrl + '/api/cafe/' + cafeId + '/menu', menu);
     }
 
-    createCafe(ownerId, cafe) {
-        return this.httpClient.post(this.baseUrl + '/api/owner/' + ownerId + '/cafe', cafe);
+    findMenusByCafeId(cafeId) {
+        return this.httpClient.get(this.baseUrl + '/api/cafe/' + cafeId + '/menus');
     }
 }

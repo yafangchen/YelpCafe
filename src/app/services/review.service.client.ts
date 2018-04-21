@@ -10,23 +10,27 @@ export class ReviewService {
 
     baseUrl = environment.baseUrl;
 
-    getCafesByOwnerId(ownerId) {
-        return this.httpClient.get(this.baseUrl + 'api/owner/' + ownerId + 'cafes');
+    findReviewById(reviewId) {
+        return this.httpClient.get(this.baseUrl + '/api/review/' + reviewId);
     }
 
-    getCafeById(cafeId) {
-        return this.httpClient.get(this.baseUrl + 'api/cafe/' + cafeId);
+    updateReview(reviewId, review) {
+        return this.httpClient.put(this.baseUrl + '/api/review/' + reviewId);
     }
 
-    updateCafe(cafeId, cafe) {
-        return this.httpClient.put(this.baseUrl + 'api/cafe' + cafeId, cafe);
+    deleteReview(reviewId) {
+        return this.httpClient.delete(this.baseUrl + '/api/review/'  +reviewId);
     }
 
-    deleteCafe(cafeId) {
-        return this.httpClient.delete(this.baseUrl + 'api/cafe/' + cafeId);
+    createReview(cafeId, userId, review) {
+        return this.httpClient.post(this.baseUrl + '/api/review?cafeId=' + cafeId + '&userId=' + userId, review);
     }
 
-    createCafe(ownerId, cafe) {
-        return this.httpClient.post(this.baseUrl + '/api/owner/' + ownerId + '/cafe', cafe);
+    findReviewsByCafeId(cafeId) {
+        return this.httpClient.get(this.baseUrl + '/api/cafe/' + cafeId + '/reviews');
+    }
+
+    findReviewsByUserId(userId) {
+        return this.httpClient.get(this.baseUrl + '/api/user/' + userId + '/reviews');
     }
 }

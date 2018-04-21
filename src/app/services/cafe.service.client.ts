@@ -11,19 +11,19 @@ export class CafeService {
     baseUrl = environment.baseUrl;
 
     getCafesByOwnerId(ownerId) {
-        return this.httpClient.get(this.baseUrl + 'api/owner/' + ownerId + 'cafes');
+        return this.httpClient.get(this.baseUrl + '/api/owner/' + ownerId + 'cafes');
     }
 
     getCafeById(cafeId) {
-        return this.httpClient.get(this.baseUrl + 'api/cafe/' + cafeId);
+        return this.httpClient.get(this.baseUrl + '/api/cafe/' + cafeId);
     }
 
     updateCafe(cafeId, cafe) {
-        return this.httpClient.put(this.baseUrl + 'api/cafe' + cafeId, cafe);
+        return this.httpClient.put(this.baseUrl + '/api/cafe' + cafeId, cafe);
     }
 
     deleteCafe(cafeId) {
-        return this.httpClient.delete(this.baseUrl + 'api/cafe/' + cafeId);
+        return this.httpClient.delete(this.baseUrl + '/api/cafe/' + cafeId);
     }
 
     createCafe(ownerId, cafe) {
