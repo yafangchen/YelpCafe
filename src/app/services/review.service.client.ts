@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class CafeService {
+export class ReviewService {
     constructor(private httpClient: HttpClient, private router: Router) {}
 
     baseUrl = environment.baseUrl;

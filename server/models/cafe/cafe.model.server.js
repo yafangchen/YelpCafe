@@ -20,11 +20,19 @@ function findCafeById(cafeId) {
 
 function updateCafe(cafeId, cafe) {
     return CafeModel.update({_id: cafeId}, {
-        $set: {name: cafe.name,
+        $set: {
+            placeId: cafe.placeId,
+            name: cafe.name,
             address: cafe.address,
             openHour: cafe.openHour,
             phone: cafe.phone,
-            images: cafe.images
+            priceLevel: cafe.priceLevel,
+            rating: cafe.rating,
+            isOpen: caef.isOpen,
+            weekdayText: cafe.weekdayText,
+            icon: cafe.icon,
+            avatar: cafe.avatar,
+            photos: cafe.photos
         }});
 }
 
