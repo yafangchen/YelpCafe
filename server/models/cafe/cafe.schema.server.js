@@ -10,7 +10,7 @@ var CafeSchema = mongoose.Schema ({
     priceLevel: String,
     rating: String,
     isOpen: Boolean,
-    weekdayText: String,
+    weekdayText: Array,
     icon: String,
     avatar: String,
     photos: Array

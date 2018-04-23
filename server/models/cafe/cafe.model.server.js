@@ -28,7 +28,7 @@ function updateCafe(cafeId, cafe) {
             phone: cafe.phone,
             priceLevel: cafe.priceLevel,
             rating: cafe.rating,
-            isOpen: caef.isOpen,
+            isOpen: cafe.isOpen,
             weekdayText: cafe.weekdayText,
             icon: cafe.icon,
             avatar: cafe.avatar,

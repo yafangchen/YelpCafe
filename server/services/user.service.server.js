@@ -2,7 +2,15 @@ module.exports = function (app) {
     var userModel = require("../models/user/user.model.server");
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
+    var FacebookStrategy = require('passport-facebook').Strategy;
     var bcrypt = require("bcrypt-nodejs");
+
+    var facebookConfig = {
+        //clientID: process.env.FB_CLIENT_ID,
+        clientID: '123',
+        clientSecret: process.env.FB_CLIENT_SECRET,
+        callbackURL: process.env.FB_CALLBACK_URL
+    };
 
     app.get("/api/user/all", findAllUser);
 
@@ -20,7 +28,7 @@ module.exports = function (app) {
 
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect: '/user/' + userId,
+            successRedirect: '/user/',
             failureRedirect: '/login'
         }));
     app.get ('/facebook/login', passport.authenticate('facebook', { scope : 'email' }));

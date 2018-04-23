@@ -15,11 +15,11 @@ export class ReviewService {
     }
 
     updateReview(reviewId, review) {
-        return this.httpClient.put(this.baseUrl + '/api/review/' + reviewId);
+        return this.httpClient.put(this.baseUrl + '/api/review/' + reviewId, review);
     }
 
     deleteReview(reviewId) {
-        return this.httpClient.delete(this.baseUrl + '/api/review/'  +reviewId);
+        return this.httpClient.delete(this.baseUrl + '/api/review/' + reviewId);
     }
 
     createReview(cafeId, userId, review) {

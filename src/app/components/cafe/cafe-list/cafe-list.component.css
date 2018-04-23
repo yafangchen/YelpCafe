@@ -1,0 +1,19 @@
+.cafe-list {
+  padding: 40px;
+  line-height: 0;
+  -webkit-column-count: 3;
+  -webkit-column-gap:   1em;
+  -moz-column-count:    3;
+  -moz-column-gap:      1em;
+  column-count:         3;
+  column-gap:           1em;
+}
+
+.grid-item {
+  /*width: 100% !important;*/
+  /*height: auto !important;*/
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+  background-color: transparent;
+}

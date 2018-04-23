@@ -1,17 +1,34 @@
 <div class="search-container">
-  <h1>Yelp Cafe</h1>
   <div class="search-form">
-    <!--
-    <label for="cafe-name" class="search-label">Search for a Cafe</label>
-    <input type="text" id="cafe-name" placeholder="Enter a cafe..." class="search-input">
-    <input type="text" id="cafe-pos" placeholder="Enter a place..." class="search-input">
-    <input type="submit" value="Search Cafe!" class="btn-primary">-->
-    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" class="search-form">
-      <div class="field">
-        <label for="searchInput">Search for Cafe </label>
-        <input type="text" id="searchInput" placeholder="Enter Cafe name..." name="cafeName" ngModel>
-      </div>
-      <button type="submit" class="btn-primary">Search!</button>
+    <form #f="ngForm" (ngSubmit)="onSubmit()" class="search-form">
+      <label for="searchInput">SEARCH FOR CAFE </label>
+      <input type="text" id="searchInput" placeholder="Enter Cafe name..." name="cafeName" ngModel required>
+      <input type="text" id="position" placeholder="Enter a Location" name="location" ngModel required #search>
+      <!--<button type="button" class="btn-1" id="geolocation-btn">-->
+        <!--<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>-->
+      <!--</button>-->
+      <button type="submit" class="btn-1">Search!</button>
     </form>
+  </div>
+
+  <div class="google_map" #gmap>
+    <div class="banner" *ngIf="noGmap">
+      <h2>Try to search for your favourite Cafe!</h2>
+      <br>
+      <iframe src="https://giphy.com/embed/FxIV0LmGcjQKA" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="search-loader">
+    <img *ngIf="loading" src="../../../../assets/gifs/loading2.gif" />
+  </div>
+
+  <div class="search-result row" *ngIf="showResult">
+    <app-result-box
+      *ngFor="let cafe of cafes"
+      [result]="cafe"
+      [routerLink]="['/owner/cafe', cafe.placeId]"
+      class="grid-item">
+    </app-result-box>
   </div>
 </div>

@@ -1,3 +1,67 @@
-<p>
-  cafe-new works!
-</p>
+<form id="cafeNew" (ngSubmit)="createCafe()" #f="ngForm">
+  <div class="form-group">
+    <label for="cafeName">Cafe Name</label>
+    <input type="text" class="form-control"
+           id="cafeName" placeholder="Your Cafe Name"
+           name="cafeName"
+           ngModel #cafeName="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input type="text" class="form-control"
+           id="address" placeholder="Your Cafe Address"
+           name="address"
+           ngModel #address="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="text" class="form-control"
+           id="phone" placeholder="Your Phone Number"
+           name="phone"
+           ngModel #phone="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="photo1">Photo1</label>
+    <input type="url" class="form-control"
+           id="photo1" placeholder="Your Photo URL"
+           name="photo1"
+           ngModel #photo1="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="photo2">Photo2</label>
+    <input type="url" class="form-control"
+           id="photo2" placeholder="Your Photo URL"
+           name="photo2"
+           ngModel #photo2="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="photo3">Photo3</label>
+    <input type="url" class="form-control"
+           id="photo3" placeholder="Your Photo URL"
+           name="photo3"
+           ngModel #photo3="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="photo4">Photo4</label>
+    <input type="url" class="form-control"
+           id="photo4" placeholder="Your Photo URL"
+           name="photo4"
+           ngModel #photo4="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="photo5">Photo5</label>
+    <input type="url" class="form-control"
+           id="photo5" placeholder="Your Photo URL"
+           name="photo5"
+           ngModel #photo5="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="openHour">Open Hour</label>
+    <input type="url" class="form-control"
+           id="openHour" placeholder="Your Daily Open Hour"
+           name="openHour"
+           ngModel #openHour="ngModel">
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

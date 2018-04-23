@@ -1,8 +1,8 @@
-<div class="container" style="margin-top: 100px;">
-  <ul class="list-group cl-list-group-borderless">
-    <li *ngFor = "let cafe of cafes">
-      <a routerLink="/user/{{userId}}/cafe/{{cafe._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-      <a routerLink="/user/{{userId}}/cafe/view/{{cafe._id}}">{{cafe.name}}</a>
-    </li>
-  </ul>
+<div class="cafe-list">
+  <app-result-box
+    *ngFor="let cafe of cafes"
+    [result]="cafe"
+    [routerLink]="['../cafe-profile', cafe._id]"
+    class="grid-item">
+  </app-result-box>
 </div>

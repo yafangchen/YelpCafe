@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxCarouselModule } from 'ngx-carousel';
-import { Routing } from './app.routing';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { AgmCoreModule } from '@agm/core';
+import { routing } from './app.routing';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/customer/login/login.component';
@@ -16,13 +18,27 @@ import { LandingComponent } from './components/home/landing/landing.component';
 import { SearchComponent } from './components/home/search/search.component';
 import { FooterComponent } from './components/home/footer/footer.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { CafeViewComponent } from './components/cafe/cafe-view/cafe-view.component';
 
-import {CafeService} from './services/cafe.service.client';
-import {SharedService} from './services/shared.service';
-import {MenuService} from './services/menu.service.client';
-import {ReviewService} from './services/review.service.client';
-import {UserService} from './services/user.service.client';
+import { ResultBoxComponent } from './components/home/result-box/result-box.component';
+import { CafeProfileComponent } from './components/cafe/cafe-profile/cafe-profile.component';
+import { OwnerProfileComponent } from './components/owner/owner-profile/owner-profile.component';
+import { AdminProfileComponent } from './components/admin/admin-profile/admin-profile.component';
+import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
+import { OwnerHomeComponent } from './components/owner/owner-home/owner-home.component';
+import { UserListComponent } from './components/admin/user-list/user-list.component';
+import { CafeImageComponent } from './components/cafe/cafe-image/cafe-image.component';
+import { MenuItemComponent } from './components/cafe/menu-item/menu-item.component';
+
+import { SearchService } from './services/search.service.client';
+import { SharedService } from './services/shared.service.client';
+import { UserService } from './services/user.service.client';
+import { CafeService } from './services/cafe.service.client';
+import { MenuService } from './services/menu.service.client';
+import { ReviewService } from './services/review.service.client';
+import { CafeViewComponent } from './components/cafe/cafe-view/cafe-view.component';
+import { MenuNewComponent } from './components/cafe/menu-new/menu-new.component';
+import { CutomerHomeComponent } from './components/customer/cutomer-home/cutomer-home.component';
+
 
 @NgModule({
   declarations: [
@@ -37,17 +53,39 @@ import {UserService} from './services/user.service.client';
     LandingComponent,
     SearchComponent,
     FooterComponent,
-    CafeViewComponent
+    ResultBoxComponent,
+    CafeProfileComponent,
+    OwnerProfileComponent,
+    AdminProfileComponent,
+    AdminHomeComponent,
+    OwnerHomeComponent,
+    UserListComponent,
+    CafeImageComponent,
+    MenuItemComponent,
+    CafeViewComponent,
+    MenuNewComponent,
+    CutomerHomeComponent
   ],
   imports: [
-      BrowserModule,
-      FormsModule,
-      HttpClientModule,
-      ReactiveFormsModule,
-      NgxCarouselModule,
-      Routing
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxCarouselModule,
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBKozXPSQr1_jDr3HKsqXHOEb3sviGOZG4',
+      libraries: ['places']
+    }),
+    routing
   ],
-  providers: [CafeService, SharedService, UserService, MenuService, ReviewService],
+  providers: [
+    SearchService,
+    SharedService,
+    UserService,
+    CafeService,
+    MenuService,
+    ReviewService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

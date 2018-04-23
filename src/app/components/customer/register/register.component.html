@@ -1,3 +1,104 @@
-<p>
-  register works!
-</p>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="login100-more" style="background-image: url('../../../../assets/images/coffee-bg3.jpg');"></div>
+
+    <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+      <form class="login100-form validate-form" (ngSubmit)="register()" #f="ngForm">
+					<span class="login100-form-title p-b-20">
+						Sign Up
+					</span>
+
+        <div class="checkbox-container" *ngFor="let roleValue of roleValues">
+            <label class="radio-inline">
+              <input type="radio"
+                     name="userRole"
+                     [value]="roleValue"
+                     (change)="onRoleChange(roleValue)"/>I'm a {{roleValue}}
+            </label>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Name is required">
+          <span class="label-input100">First Name</span>
+          <input class="input100"
+                 type="text" name="firstname" placeholder="First name..."
+                 ngModel #firstname="ngModel"/>
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Name is required">
+          <span class="label-input100">Last Name</span>
+          <input class="input100"
+                 type="text" name="lastname" placeholder="Last name..."
+                 ngModel #lastname="ngModel"/>
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+          <span class="label-input100">Email</span>
+          <input class="input100"
+                 type="text" name="email" placeholder="Email addess..."
+                 ngModel #email="ngModel"/>
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Username is required">
+          <span class="label-input100">Username</span>
+          <input class="input100"
+                 type="text" name="username" placeholder="Username..."
+                 ngModel required #username="ngModel"/>
+          <span class="help-block" *ngIf="!username.valid && username.touched">
+            Please enter username!
+          </span>
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Password is required">
+          <span class="label-input100">Password</span>
+          <input class="input100"
+                 type="text" name="password" placeholder="*************"
+                 ngModel required #password="ngModel"/>
+          <span class="help-block" *ngIf="!password.valid && password.touched">
+            Please enter password!
+          </span>
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate = "Repeat Password is required">
+          <span class="label-input100">Repeat Password</span>
+          <input class="input100"
+                 type="text" name="vpassword" placeholder="*************"
+                 ngModel required #vpassword="ngModel"/>
+          <span class="help-block" *ngIf="!vpassword.valid && vpassword.touched">
+            Please verify password!
+          </span>
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="flex-m w-full p-b-33">
+          <div class="contact100-form-checkbox">
+          </div>
+
+
+        </div>
+
+        <div class="container-login100-form-btn">
+          <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <button class="login100-form-btn"
+                    type="submit"
+                    [disabled]="!f.valid">
+              Sign Up
+            </button>
+          </div>
+
+          <!--<a routerLink="../owner/register" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">-->
+            <!--I'm Cafe Owner-->
+          <!--</a>-->
+          <!--<a routerLink="../admin/register" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30 admin">-->
+            <!--I'm Admin-->
+          <!--</a>-->
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

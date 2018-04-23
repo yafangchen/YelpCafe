@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CafeService } from '../../../services/cafe.service.client';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Cafe} from '../../../models/cafe.model.client';
+import {SharedService} from '../../../services/shared.service.client';
+import {CafeService} from '../../../services/cafe.service.client';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-cafe-list',
@@ -8,27 +10,31 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./cafe-list.component.css']
 })
 export class CafeListComponent implements OnInit {
-  userId: String;
-  cafes: {};
 
-  constructor(private cafeService: CafeService, private activatedRoute: ActivatedRoute) { }
+  cafes: Cafe[];
+  ownerId: string;
+  user: any;
+
+  constructor(
+    private sharedService: SharedService,
+    private cafeService: CafeService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
-      this.userId = params['userId'];
-      this.cafeService.findCafesByUserId(this.userId)
-          .subscribe(cafes => {
-              this.cafes = cafes;
-          });
-    });
-    /*
-    this.userId = this.activatedRoute.params['userId'];
-    console.log(this.activatedRoute.params);
-    this.cafeService.findCafesByUserId(this.userId)
-        .subscribe(cafes => {
+    this.user = this.sharedService.user;
+    this.route.params.subscribe(params => {
+      this.ownerId = params['ownerId'];
+      this.cafeService.getCafesByOwnerId(this.ownerId).subscribe(
+        (cafes: Cafe[]) => {
+          console.log('cafes: ', cafes);
           this.cafes = cafes;
-        });
-    */
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
+    });
   }
 
 }

@@ -1,0 +1,84 @@
+<div class="response-loader">
+  <img *ngIf="loading" src="../../../../assets/gifs/loading1.gif" />
+</div>
+
+<div class="container" *ngIf="!loading">
+  <div class="jumbotron" [ngStyle]="{'background-image': 'url(' + cafe.avatar + ')'}">
+    <h1>{{cafe.name}}</h1>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="row">
+          <span class="price-level" *ngFor="let i of Arr(cafe.priceLevel).fill(1)">
+            <i class="fas fa-dollar-sign"></i>
+          </span>
+          <span>*</span>
+          <span *ngIf="cafe.isOpen">OPEN</span>
+          <span *ngIf="!cafe.isOpen">CLOSED</span>
+        </div>
+        <div class="row">
+          <p class="address">{{cafe.address}}</p>
+        </div>
+        <div class="row">
+          <p class="phone">{{cafe.phone}}</p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <p class="open-hour">OPEN HOURS</p>
+        <ul *ngFor="let hour of cafe.weekdayText">
+          <li>{{hour}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+ <div class="tabs">
+   <ul class="nav nav-pills">
+     <li class="active"><a data-toggle="pill" href="#gallery">Gallery</a></li>
+     <li><a data-toggle="pill" href="#menu">Menu</a></li>
+     <li><a data-toggle="pill" href="#reviews">Reviews</a></li>
+   </ul>
+
+   <div class="tab-content">
+     <div id="gallery" class="tab-pane fade in active grid">
+       <h1 *ngIf="!hasPhotos">No Photos To Show...</h1>
+       <app-cafe-image
+         *ngFor="let photo of cafe.photos"
+         [result]="photo"
+         class="grid-item">
+       </app-cafe-image>
+     </div>
+     <div id="menu" class="tab-pane fade">
+       <app-menu-item
+        *ngFor="let m of menu"
+        [result]="m"
+        class="grid-item">
+       </app-menu-item>
+     </div>
+     <div id="reviews" class="tab-pane fade">
+       <ul class="list-group" *ngFor="let review of reviews">
+         <li class="list-group-item list-group-item-warning">
+           <!--<span class="badge">{{username}}</span>-->
+           {{review.content}}
+         </li>
+       </ul>
+       <form (ngSubmit)="addReview()" #f="ngForm">
+         <div class="form-group">
+           <div class="col-sm-10">
+             <label for="review">ADD REVIEW </label>
+             <input type="text"
+                    id="review"
+                    class="form-control"
+                    placeholder="Add your review..."
+                    name="review"
+                    ngModel required #review="ngModel"/>
+           </div>
+         </div>
+         <div class="form-group">
+           <button id="addReview" type="submit" class="btn btn-default">SUBMIT</button>
+         </div>
+       </form>
+     </div>
+   </div>
+ </div>
+
+</div>

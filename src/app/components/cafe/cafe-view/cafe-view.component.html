@@ -1,78 +1,70 @@
-<nav class="navbar navbar-default navbar-fixed-top cl-blue-navbar">
-  <div class="container-fluid">
-    <a class="cl-text-white navbar-brand cl-text-bold">
-      Cafe
-    </a>
-  </div>
-</nav>
+<div class="response-loader">
+  <img *ngIf="loading" src="../../../../assets/gifs/loading1.gif" />
+</div>
 
-<style>
-    .card {
-      float: left;
-      width: 33.333%;
-      padding: .75rem;
-      margin-bottom: 2rem;
-      border: 0;
-      position: relative;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      background-color: #fff;
-      border: 1px solid rgba(0,0,0,.125);
-      border-radius: .25rem;
-    }
-</style>
-
-<section style="margin-top: 100px;">
-  <div class = "container-fluid" style="text-align: center">
-    <img *ngFor = "let image of images" src="/assets/images/{{image}}" style="height:200px; margin-left:5px">
-    <h1><strong>{{name}}</strong></h1>
-    <address>
-        {{address}}
-    </address>
-    <abbr title="phone">P:</abbr> {{phone}} <br>
-    <strong>Open Hour: {{openHour}}</strong>
-  </div>
-</section>
-<section style="margin-top:10px;">
-  <h1>Menus</h1>
-  <div class="container-fluid">
-      <div class="row">
-        <div *ngFor = "let menu of menus" class="card" style="text-align: center;">
-            <img src="/assets/images/{{menu.image}}" alt="100%*300" style="display:block; height:300px;">
-            <p><strong>{{menu.name}}</strong></p>
-            <p><strong>{{menu.price}}</strong></p>
-            <p>{{menu.description}}</p>
+<div class="container" *ngIf="!loading">
+  <div class="jumbotron" [ngStyle]="{'background-image': 'url(' + cafe.avatar + ')'}">
+    <h1>{{cafe.name}}</h1>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="row">
+          <span class="price-level" *ngFor="let i of Arr(cafe.priceLevel).fill(1)">
+            <i class="fas fa-dollar-sign"></i>
+          </span>
+          <span>*</span>
+          <span *ngIf="cafe.isOpen">OPEN</span>
+          <span *ngIf="!cafe.isOpen">CLOSED</span>
+        </div>
+        <div class="row">
+          <p class="address">{{cafe.address}}</p>
+        </div>
+        <div class="row">
+          <p class="phone">{{cafe.phone}}</p>
         </div>
       </div>
-  </div>
-</section>
-
-<section>
-    <h1>Reviews</h1>
-    <div class="container-fluid" >
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>User</th>
-                <th>Comment</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let review of reviews">
-                <td>{{review.user}}</td>
-                <td>{{review.content}}</td>
-            </tr>
-            </tbody>
-        </table>
+      <div class="col-sm-4">
+        <p class="open-hour">OPEN HOURS</p>
+        <ul *ngFor="let hour of cafe.weekdayText">
+          <li>{{hour}}</li>
+        </ul>
+      </div>
     </div>
-</section>
+  </div>
 
-<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
-</nav>
+  <div class="tabs">
+    <ul class="nav nav-pills">
+      <li class="active"><a data-toggle="pill" href="#gallery">Gallery</a></li>
+      <li><a data-toggle="pill" href="#menu">Menu</a></li>
+      <li><a data-toggle="pill" href="#reviews">Reviews</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="gallery" class="tab-pane fade in active grid">
+        <h1 *ngIf="!hasPhotos">No Photos To Show...</h1>
+        <app-cafe-image
+          *ngFor="let photo of cafe.photos"
+          [result]="photo"
+          class="grid-item">
+        </app-cafe-image>
+      </div>
+      <div id="menu" class="tab-pane fade">
+        <app-menu-item
+          *ngFor="let m of menu"
+          [result]="m"
+          class="grid-item">
+        </app-menu-item>
+
+        <button class="btn btn-primary" routerLink="./menu">Add Menu</button>
+      </div>
+      <div id="reviews" class="tab-pane fade">
+        <ul class="list-group" *ngFor="let review of reviews">
+          <li class="list-group-item list-group-item-warning">
+            <!--<span class="badge">{{username}}</span>-->
+            {{review.content}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>

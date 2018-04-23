@@ -1,3 +1,49 @@
-<p>
-  profile works!
-</p>
+<div class="container container-padding">
+
+  <div *ngIf="updateFlag"
+       class="alert alert-success">
+    {{updateMsg}}
+  </div>
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    {{errorMsg}}
+  </div>
+
+  <h2>User: {{user.username}}</h2>
+  <form>
+    <label for="Username">Username</label>
+    <input id="Username"
+           type="text"
+           class="form-control"
+           name="username"
+           placeholder="username"
+           [(ngModel)]="user.username"/>
+    <label for="FirstName">First Name</label>
+    <input id="FirstName"
+           type="text"
+           class="form-control"
+           name="firstname"
+           placeholder="first name"
+           [(ngModel)]="user.firstname"/>
+    <label for="LastName">Last Name</label>
+    <input id="LastName"
+           type="text"
+           class="form-control"
+           placeholder="last name"
+           name="lastname"
+           [(ngModel)]="user.lastname"/>
+    <label for="Email">Email</label>
+    <input id="Email"
+           type="email"
+           class="form-control"
+           placeholder="email"
+           name="email"
+           [(ngModel)]="user.email"/>
+  </form>
+
+  <br>
+  <a class="btn btn-success btn-block" (click)="updateUser()">Update</a>
+  <span class="help-block" *ngIf="updateFlag"></span>
+  <span class="help-block" *ngIf="errorFlag"></span>
+  <a class="btn btn-primary btn-block" routerLink='../'>Return Home</a>
+</div>

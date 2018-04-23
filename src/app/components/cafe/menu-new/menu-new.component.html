@@ -1,0 +1,24 @@
+<form id="menuNew" (ngSubmit)="createMenu()" #f="ngForm">
+  <div class="form-group">
+    <label for="description">Menu Description</label>
+    <input type="text" class="form-control"
+           id="description" placeholder="Your Coffee Description"
+           name="description"
+           ngModel #description="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="text" class="form-control"
+           id="price" placeholder="Your Coffe Price"
+           name="price"
+           ngModel #price="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="photo">Photo</label>
+    <input type="text" class="form-control"
+           id="photo" placeholder="Your Coffee Photo"
+           name="photo"
+           ngModel #photo="ngModel">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

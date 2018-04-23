@@ -1,0 +1,87 @@
+.response-loader {
+  width: 30%;
+  margin: auto;
+}
+
+.container {
+  margin-top: 20px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.jumbotron {
+  color: white;
+}
+
+.jumbotron::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #a5668b;
+  background: -webkit-linear-gradient(bottom, #a5668b, #c0abaf);
+  background: -o-linear-gradient(bottom, #a5668b, #c0abaf);
+  background: -moz-linear-gradient(bottom, #a5668b, #c0abaf);
+  background: linear-gradient(bottom, #a5668b, #c0abaf);
+  opacity: 0.3;
+}
+
+.jumbotron h1 {
+  font-family: 'Satisfy', cursive;
+}
+
+.open-hour {
+  text-align: center;
+  font-weight: 700;
+}
+
+.nav>li>a {
+  position: relative;
+  display: block;
+  padding: 10px 33px;
+  margin-left: 150px;
+}
+
+#gallery {
+  margin-top: 40px;
+
+  line-height: 0;
+  -webkit-column-count: 3;
+  -webkit-column-gap:   1em;
+  -moz-column-count:    3;
+  -moz-column-gap:      1em;
+  column-count:         3;
+  column-gap:           1em;
+}
+
+#menu {
+  margin-top: 40px;
+
+  line-height: 0;
+  -webkit-column-count: 3;
+  -webkit-column-gap:   1em;
+  -moz-column-count:    3;
+  -moz-column-gap:      1em;
+  column-count:         3;
+  column-gap:           1em;
+}
+
+.grid-item {
+  /*width: 100% !important;*/
+  /*height: auto !important;*/
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+  background-color: transparent;
+}
+
+#reviews {
+  margin-top: 40px;
+}
+
+#addReview {
+  margin-top: 20px;
+}

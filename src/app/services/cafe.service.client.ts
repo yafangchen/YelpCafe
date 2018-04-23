@@ -11,7 +11,7 @@ export class CafeService {
     baseUrl = environment.baseUrl;
 
     getCafesByOwnerId(ownerId) {
-        return this.httpClient.get(this.baseUrl + '/api/owner/' + ownerId + 'cafes');
+        return this.httpClient.get(this.baseUrl + '/api/owner/' + ownerId + '/cafes');
     }
 
     getCafeById(cafeId) {

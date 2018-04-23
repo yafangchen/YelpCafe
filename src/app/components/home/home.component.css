@@ -1,3 +1,11 @@
+.navbar {
+  margin-bottom: 0px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.navbar-brand {
+  font-family: 'Satisfy', cursive;
+}
 
 .footer {
   margin-top: 20px;
