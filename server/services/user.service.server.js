@@ -6,8 +6,7 @@ module.exports = function (app) {
     var bcrypt = require("bcrypt-nodejs");
 
     var facebookConfig = {
-        //clientID: process.env.FB_CLIENT_ID,
-        clientID: '123',
+        clientID: process.env.FB_CLIENT_ID,
         clientSecret: process.env.FB_CLIENT_SECRET,
         callbackURL: process.env.FB_CALLBACK_URL
     };
